@@ -1,10 +1,30 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Book&Go – Trouvez votre hôtel";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1 class="mb-3">Rechercher un hôtel</h1>
+
+<form hx-get="/Search" hx-target="#results" hx-push-url="true" class="row g-2">
+    <div class="col-auto">
+        <input class="form-control" name="City" placeholder="Ville (ex: Nice)" required />
+    </div>
+    <div class="col-auto">
+        <label class="form-check">
+            <input type="checkbox" class="form-check-input" name="EcoOnly" />
+            <span class="form-check-label">Eco seulement</span>
+        </label>
+    </div>
+    <div class="col-auto">
+        <input type="date" class="form-control" name="CheckIn" />
+    </div>
+    <div class="col-auto">
+        <input type="date" class="form-control" name="CheckOut" />
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-primary" type="submit">Rechercher</button>
+    </div>
+</form>
+
+<div id="results" class="mt-4"></div>
